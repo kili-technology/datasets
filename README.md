@@ -38,9 +38,10 @@
     <a href="https://hf.co/course"><img src="https://raw.githubusercontent.com/huggingface/datasets/master/docs/source/imgs/course_banner.png"></a>
 </h3>
 
-🤗 Datasets also provides access to +15 evaluation metrics and is designed to let the community easily add and share new datasets and evaluation metrics. 
+🤗 Datasets also provides access to +15 evaluation metrics and is designed to let the community easily add and share new datasets and evaluation metrics.
 
 🤗 Datasets has many additional interesting features:
+
 - Thrive on large datasets: 🤗 Datasets naturally frees the user from RAM memory limitation, all datasets are memory-mapped using an efficient zero-serialization cost backend (Apache Arrow).
 - Smart caching: never wait for your data to process several times.
 - Lightweight and fast with a transparent and pythonic API (multi-processing/caching/memory-mapping).
@@ -55,7 +56,9 @@
 🤗 Datasets can be installed from PyPi and has to be installed in a virtual environment (venv or conda for instance)
 
 ```bash
-pip install datasets
+git clone https://github.com/kili-technology/datasets.git
+cd datasets
+pip install .
 ```
 
 ## With conda
@@ -97,6 +100,9 @@ print(list_datasets())
 squad_dataset = load_dataset('squad')
 print(squad_dataset['train'][0])
 
+# Load a dataset from Kili
+dataset = load_dataset('kili/ckyulgs780w9z0lt3ej3a1yxg', kili_api_key=os.getenv('KILI_API_KEY')) # ckyulgs780w9z0lt3ej3a1yxg is the project ID
+
 # List all the available metrics
 print(list_metrics())
 
@@ -135,6 +141,7 @@ You can also have your own repository for your dataset on the Hub under your or 
 # Main differences between 🤗 Datasets and `tfds`
 
 If you are familiar with the great TensorFlow Datasets, here are the main differences between 🤗 Datasets and `tfds`:
+
 - the scripts in 🤗 Datasets are not provided within the library but are queried, downloaded/cached and dynamically loaded upon request
 - 🤗 Datasets also provides evaluation metrics in a similar fashion to the datasets, i.e. as dynamically installed scripts with a unified API. This gives access to the pair of a benchmark dataset and a benchmark metric for instance for benchmarks like [SQuAD](https://rajpurkar.github.io/SQuAD-explorer/) or [GLUE](https://gluebenchmark.com/).
 - the backend serialization of 🤗 Datasets is based on [Apache Arrow](https://arrow.apache.org/) instead of TF Records and leverage python dataclasses for info and features with some diverging features (we mostly don't do encoding and store the raw data as much as possible in the backend serialization cache).
@@ -147,6 +154,7 @@ Similar to TensorFlow Datasets, 🤗 Datasets is a utility library that download
 If you're a dataset owner and wish to update any part of it (description, citation, etc.), or do not want your dataset to be included in this library, please get in touch through a [GitHub issue](https://github.com/huggingface/datasets/issues/new). Thanks for your contribution to the ML community!
 
 ## BibTeX
+
 If you want to cite our 🤗 Datasets [paper](https://arxiv.org/abs/2109.02846) and library, you can use these:
 
 ```bibtex
@@ -197,6 +205,7 @@ If you want to cite our 🤗 Datasets [paper](https://arxiv.org/abs/2109.02846) 
     primaryClass={cs.CL},
 }
 ```
+
 ```bibtex
 @software{quentin_lhoest_2021_5639822,
   author       = {Quentin Lhoest and

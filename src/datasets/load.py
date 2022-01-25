@@ -49,6 +49,7 @@ from .features import Features
 from .filesystems import extract_path_from_uri, is_remote_filesystem
 from .info import DatasetInfo, DatasetInfosDict
 from .iterable_dataset import IterableDataset
+from .kili import kili_decorator
 from .metric import Metric
 from .packaged_modules import _EXTENSION_TO_MODULE, _PACKAGED_DATASETS_MODULES, hash_python_lines
 from .splits import Split
@@ -1527,6 +1528,8 @@ def load_dataset_builder(
     return builder_instance
 
 
+
+@kili_decorator
 def load_dataset(
     path: str,
     name: Optional[str] = None,
